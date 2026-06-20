@@ -55,14 +55,7 @@ export default function Footer() {
             <Link href="/about">About Us</Link>
             <Link href="/contact">Contact</Link>
           </div>
-
-          <div className="footer-col">
-            <h4>Categories</h4>
-            <Link href="/">Lifestyle</Link>
-            <Link href="/">Writing</Link>
-            <Link href="/">Travel</Link>
-          </div>
-
+	  
           <div className="footer-col footer-newsletter">
             <h4>Stay updated</h4>
             <p>Get new posts in your inbox. No spam, unsubscribe anytime.</p>
