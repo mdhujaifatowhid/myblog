@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import PostCard from '../components/PostCard';
 import { getAllPosts } from '../lib/posts';
+import { getSiteUrl } from '../lib/site';
 
 const PAGE_SIZE = 10;
 
@@ -124,7 +125,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts,
-      siteUrl: process.env.NEXT_PUBLIC_SITE_URL || '',
+      siteUrl: getSiteUrl(),
       siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Simple Blog',
     },
     revalidate: 60,
