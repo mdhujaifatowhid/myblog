@@ -43,7 +43,7 @@ export default function Footer() {
               line with your own one-sentence pitch.
             </p>
             <div className="footer-social">
-              <a href="https://x.com/HujaifaTowhid</a>" aria-label="Twitter / X"><SocialIcon name="twitter" />
+              <a href="https://x.com/HujaifaTowhid</a>" aria-label="Twitter / X"><SocialIcon name="twitter" /> 
               <a href="https://instagram.com/hujaifa.tired</a>" aria-label="Instagram"><SocialIcon name="instagram" />
               <a href="https://www.facebook.com/md.hujaifa.towhid</a>" aria-label="Facebook"><SocialIcon name="facebook" />
               <a href="https://www.linkedin.com/in/hujaifa-towhid/</a>" aria-label="LinkedIn"><SocialIcon name="linkedin" />
