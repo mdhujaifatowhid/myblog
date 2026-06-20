@@ -12,8 +12,10 @@ function fileToBase64(file) {
 export default function PostForm({ initial, onSubmit, submitLabel }) {
   const [title, setTitle] = useState(initial?.title || '');
   const [date, setDate] = useState(initial?.date || new Date().toISOString().slice(0, 10));
+  const [author, setAuthor] = useState(initial?.author || '');
   const [excerpt, setExcerpt] = useState(initial?.excerpt || '');
   const [thumbnail, setThumbnail] = useState(initial?.thumbnail || '');
+  const [thumbnailUrlInput, setThumbnailUrlInput] = useState(initial?.thumbnail || '');
   const [content, setContent] = useState(initial?.content || '');
   const [thumbUploading, setThumbUploading] = useState(false);
   const [contentUploading, setContentUploading] = useState(false);
@@ -36,12 +38,18 @@ export default function PostForm({ initial, onSubmit, submitLabel }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setThumbnail(data.url);
+      setThumbnailUrlInput(data.url);
     } catch (err) {
       setError(err.message);
     } finally {
       setThumbUploading(false);
       e.target.value = '';
     }
+  }
+
+  function handleThumbnailUrlChange(value) {
+    setThumbnailUrlInput(value);
+    setThumbnail(value.trim());
   }
 
   async function handleContentImageUpload(e) {
@@ -84,10 +92,10 @@ export default function PostForm({ initial, onSubmit, submitLabel }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
-    if (!title.trim()) { setError('Title is required.'); return; }
+    if (!title.trim()) { setError('Title প্রয়োজন।'); return; }
     setSaving(true);
     try {
-      await onSubmit({ title, date, excerpt, thumbnail, content });
+      await onSubmit({ title, date, author, excerpt, thumbnail, content });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -102,9 +110,19 @@ export default function PostForm({ initial, onSubmit, submitLabel }) {
         <input value={title} onChange={(e) => setTitle(e.target.value)} required />
       </div>
 
-      <div className="field">
-        <label>Date</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+      <div className="field-row">
+        <div className="field">
+          <label>Date</label>
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        </div>
+        <div className="field">
+          <label>Author</label>
+          <input
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            placeholder="e.g. Hujaifa"
+          />
+        </div>
       </div>
 
       <div className="field">
@@ -114,21 +132,40 @@ export default function PostForm({ initial, onSubmit, submitLabel }) {
 
       <div className="field">
         <label>Thumbnail Image (used on the homepage card &amp; top of the post)</label>
+
+        <div className="thumb-tabs-note">Upload a file, or paste an image URL — either works:</div>
         <input type="file" accept="image/*" onChange={handleThumbnailUpload} />
-        {thumbUploading && <p>Uploading...</p>}
-        {thumbnail && <img src={thumbnail} alt="thumbnail preview" className="thumb-preview" />}
+        {thumbUploading && <p>আপলোড হচ্ছে...</p>}
+
+        <input
+          type="url"
+          placeholder="https://example.com/image.jpg"
+          value={thumbnailUrlInput}
+          onChange={(e) => handleThumbnailUrlChange(e.target.value)}
+          style={{ marginTop: 10 }}
+        />
+
+        {thumbnail && (
+          <img
+            src={thumbnail}
+            alt="thumbnail preview"
+            className="thumb-preview"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            onLoad={(e) => { e.currentTarget.style.display = 'block'; }}
+          />
+        )}
       </div>
 
       <div className="field">
         <label>Content (Markdown supported — use the button below to insert images inside the post)</label>
         <input type="file" accept="image/*" onChange={handleContentImageUpload} style={{ marginBottom: 8 }} />
-        {contentUploading && <p>Adding image to post...</p>}
+        {contentUploading && <p>ছবি পোস্টে যোগ হচ্ছে...</p>}
         <textarea
           ref={textareaRef}
           rows={16}
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="Write your content here... (Markdown: **bold**, *italic*, ## heading)"
+          placeholder="এখানে আপনার লেখা লিখুন... (Markdown: **bold**, *italic*, ## heading)"
         />
       </div>
 
