@@ -1,11 +1,12 @@
 import { getAllPosts } from '../lib/posts';
+import { getSiteUrl } from '../lib/site';
 
 export default function Sitemap() {
   return null;
 }
 
 export async function getServerSideProps({ res }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const siteUrl = getSiteUrl();
   let posts = [];
   try {
     posts = await getAllPosts();
