@@ -15,7 +15,7 @@ export default function Contact() {
         <h1>Contact</h1>
         <p>Feel free to reach out to me at any time!</p>
         <p>
-          <a href="mailto:mailtohujaifa@gmail.com" style={{ fontWeight: 700 }}>hello@example.com</a>
+          <a href="mailto:mailtohujaifa@gmail.com" style={{ fontWeight: 700 }}>mailtohujaifa@gmail.com</a>
         </p>
         <p>I'll try to get back to you as soon as possible.</p>
       </div>
