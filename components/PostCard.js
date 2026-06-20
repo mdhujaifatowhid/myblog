@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CalendarIcon, ClockIcon } from './icons';
 
 function formatDate(d) {
   if (!d) return '';
@@ -24,7 +25,15 @@ export default function PostCard({ post }) {
         )}
       </Link>
       <div className="body">
-        <span className="post-date">&#128197; {formatDate(post.date)}</span>
+        <span className="post-meta-line">
+          <CalendarIcon /> {formatDate(post.date)}
+          {post.readingTime ? (
+            <>
+              <span className="meta-dot">&middot;</span>
+              <ClockIcon /> {post.readingTime} min read
+            </>
+          ) : null}
+        </span>
         <h3>
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
         </h3>
