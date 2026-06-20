@@ -63,7 +63,7 @@ export default function Header({ onSearch }) {
         </div>
 
         <Link href="/" className="site-logo">
-          Simple <span>Blog</span>
+          Hujaifa&#39;s <span>Blog</span>
         </Link>
 
         <div className="search-box">
