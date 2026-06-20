@@ -37,16 +37,16 @@ export default function Footer() {
       <div className="footer-inner container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="footer-logo">Simple <span>Blog</span></Link>
+            <Link href="/" className="footer-logo">Hujaifa&#39;s<span>Blog</span></Link>
             <p>
               Short, honest writing on ideas, habits and everyday moments. Replace this
               line with your own one-sentence pitch.
             </p>
             <div className="footer-social">
-              <a href="#" aria-label="Twitter / X"><SocialIcon name="twitter" /></a>
-              <a href="#" aria-label="Instagram"><SocialIcon name="instagram" /></a>
-              <a href="#" aria-label="Facebook"><SocialIcon name="facebook" /></a>
-              <a href="#" aria-label="LinkedIn"><SocialIcon name="linkedin" /></a>
+              <a href="#" aria-label="Twitter / X"><SocialIcon name="twitter" />https://x.com/HujaifaTowhid</a>
+              <a href="#" aria-label="Instagram"><SocialIcon name="instagram" />https://instagram.com/hujaifa.tired</a>
+              <a href="#" aria-label="Facebook"><SocialIcon name="facebook" />https://www.facebook.com/md.hujaifa.towhid</a>
+              <a href="#" aria-label="LinkedIn"><SocialIcon name="linkedin" />https://www.linkedin.com/in/hujaifa-towhid/</a>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {year} Simple Blog. All rights reserved.</span>
+          <span>&copy; {year} Md Hujaifa Towhid. All rights reserved.</span>
           <div className="footer-legal">
             <Link href="/">Privacy Policy</Link>
             <Link href="/">Terms of Use</Link>
