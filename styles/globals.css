@@ -1,4 +1,4 @@
-=:root {
+:root {
   --cream: #faf7f1;
   --black: #161412;
   --text: #1f1d1b;
@@ -39,7 +39,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ---------- Header ---------- */
 .site-header {
-  background: rgba(22, 20, 18, 0.92);
+  background: rgba(22, 20, 18, 0.94);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #fff;
@@ -59,29 +59,28 @@ button { font-family: inherit; cursor: pointer; }
 .site-header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 11px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
 }
 .site-logo {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.55rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   white-space: nowrap;
   color: #fff;
 }
-.site-logo span { color: #d4a373; font-style: italic; }
 
 .menu-wrap { position: relative; }
 .menu-btn {
   background: transparent;
   border: 1px solid rgba(255,255,255,0.16);
   color: #fff;
-  padding: 9px 11px;
-  border-radius: 8px;
+  padding: 7px 9px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,13 +91,13 @@ button { font-family: inherit; cursor: pointer; }
 .search-box {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 9px;
-  padding: 9px 14px;
+  border-radius: 8px;
+  padding: 7px 12px;
   flex: 1;
-  max-width: 300px;
+  max-width: 260px;
   color: rgba(255,255,255,0.75);
   transition: border-color 0.2s ease, background 0.2s ease;
 }
@@ -110,7 +109,7 @@ button { font-family: inherit; cursor: pointer; }
   border: none;
   outline: none;
   background: transparent;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   flex: 1;
   font-family: 'Hind Siliguri', Georgia, serif;
   color: #fff;
@@ -437,13 +436,15 @@ button { font-family: inherit; cursor: pointer; }
   .hero { grid-template-columns: 1fr; padding: 28px; }
   .hero h1 { font-size: 1.8rem; }
   .post-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-header-inner { padding: 9px 16px; gap: 10px; }
   .site-header-inner { flex-wrap: wrap; }
-  .search-box { order: 3; max-width: 100%; }
+  .search-box { order: 3; max-width: 100%; padding: 6px 10px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 480px) {
   .post-grid { grid-template-columns: 1fr; }
-  .site-logo { font-size: 1.3rem; }
+  .site-logo { font-size: 1.05rem; }
+  .menu-btn { padding: 6px 8px; }
   .field-row { grid-template-columns: 1fr; }
 }
