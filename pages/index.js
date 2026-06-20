@@ -42,7 +42,7 @@ export default function Home({ posts, siteUrl, siteName }) {
       ? `Showing posts from ${month !== 'all' ? month + ' ' : ''}${year !== 'all' ? year : ''}`
       : `Showing all ${filtered.length} posts`;
 
-  const description = 'Hujaifa\'s Blog — thoughts, ideas and stories on writing, mindfulness, travel and everyday life.';
+  const description = 'Simple Blog — thoughts, ideas and stories on writing, mindfulness, travel and everyday life.';
 
   return (
     <>
@@ -54,6 +54,10 @@ export default function Home({ posts, siteUrl, siteName }) {
         <meta property="og:title" content={`${siteName} — Thoughts, Ideas & Stories`} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={siteUrl} />
+        <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
         <script
           type="application/ld+json"
@@ -92,7 +96,7 @@ export default function Home({ posts, siteUrl, siteName }) {
 
         {shown.length === 0 && (
           <p style={{ textAlign: 'center', color: '#6b665f', margin: '40px 0' }}>
-            No post found
+            Post not found
           </p>
         )}
 
@@ -121,7 +125,7 @@ export async function getStaticProps() {
     props: {
       posts,
       siteUrl: process.env.NEXT_PUBLIC_SITE_URL || '',
-      siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Hujaifa\'s Blog',
+      siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Simple Blog',
     },
     revalidate: 60,
   };
