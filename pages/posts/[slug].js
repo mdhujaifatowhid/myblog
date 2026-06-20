@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { CalendarIcon, ClockIcon, UserIcon } from '../../components/icons';
 import { getAllPosts, getPostBySlug } from '../../lib/posts';
+import { getSiteUrl } from '../../lib/site';
 
 function formatDate(d) {
   if (!d) return '';
@@ -103,7 +104,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post,
-      siteUrl: process.env.NEXT_PUBLIC_SITE_URL || '',
+      siteUrl: getSiteUrl(),
       siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Simple Blog',
     },
     revalidate: 60,
