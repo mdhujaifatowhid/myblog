@@ -10,7 +10,7 @@ export async function getServerSideProps({ res }) {
 Allow: /
 Disallow: /admin/
 
-Sitemap: ${siteUrl}/sitemap.xml
+Sitemap: https://hujaifa-towhid.vercel.app/sitemap.xml
 `;
   res.setHeader('Content-Type', 'text/plain');
   res.write(body);
