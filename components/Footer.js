@@ -42,12 +42,43 @@ export default function Footer() {
               Short, honest writing on ideas, habits and everyday moments. Replace this
               line with your own one-sentence pitch.
             </p>
-            <div className="footer-social">
-              <a href="#" aria-label="Twitter / X"><SocialIcon name="twitter" />https://x.com/HujaifaTowhid</a>
-              <a href="#" aria-label="Instagram"><SocialIcon name="instagram" />https://instagram.com/hujaifa.tired</a>
-              <a href="#" aria-label="Facebook"><SocialIcon name="facebook" />https://www.facebook.com/md.hujaifa.towhid</a>
-              <a href="#" aria-label="LinkedIn"><SocialIcon name="linkedin" />https://www.linkedin.com/in/hujaifa-towhid/</a>
-            </div>
+           <div className="footer-social">
+  <a
+    href="https://x.com/HujaifaTowhid"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Twitter / X"
+  >
+    <SocialIcon name="twitter" />
+  </a>
+
+  <a
+    href="https://instagram.com/hujaifa.tired"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <SocialIcon name="instagram" />
+  </a>
+
+  <a
+    href="https://www.facebook.com/md.hujaifa.towhid"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+  >
+    <SocialIcon name="facebook" />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/hujaifa-towhid/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <SocialIcon name="linkedin" />
+  </a>
+</div>
           </div>
 
           <div className="footer-col">
