@@ -39,8 +39,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="footer-logo">Hujaifa&#39;s<span>Blog</span></Link>
             <p>
-              Short, honest writing on ideas, habits and everyday moments. Replace this
-              line with your own one-sentence pitch.
+              I write for you.
             </p>
             <div className="footer-social">
               <a href="https://x.com/HujaifaTowhid" aria-label="Twitter / X"><SocialIcon name="twitter" /></a>
