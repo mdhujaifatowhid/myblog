@@ -23,17 +23,40 @@ function SearchIcon() {
 export default function Header({ onSearch }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const ref = useRef(null);
+  const lastY = useRef(0);
 
   useEffect(() => {
     function onClick(e) {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
     }
+
+    lastY.current = window.scrollY;
+
     function onScroll() {
-      setScrolled(window.scrollY > 8);
+      const y = window.scrollY;
+      const diff = y - lastY.current;
+
+      setScrolled(y > 8);
+
+      // ignore tiny jitters; only react past a small threshold
+      if (Math.abs(diff) > 6) {
+        if (diff > 0 && y > 80) {
+          setHidden(true); // scrolling down -> hide
+          setOpen(false);
+        } else {
+          setHidden(false); // scrolling up -> reveal
+        }
+        lastY.current = y;
+      }
+
+      // always show header again once back near the top
+      if (y < 80) setHidden(false);
     }
+
     document.addEventListener('mousedown', onClick);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       document.removeEventListener('mousedown', onClick);
       window.removeEventListener('scroll', onScroll);
@@ -41,7 +64,7 @@ export default function Header({ onSearch }) {
   }, []);
 
   return (
-    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${hidden ? 'is-hidden' : ''}`}>
       <div className="site-header-inner">
         <div ref={ref} className="menu-wrap">
           <button
