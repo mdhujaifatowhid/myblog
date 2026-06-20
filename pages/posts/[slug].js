@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { CalendarIcon, ClockIcon, UserIcon } from '../../components/icons';
 import { getAllPosts, getPostBySlug } from '../../lib/posts';
 
 function formatDate(d) {
@@ -40,6 +41,7 @@ export default function PostPage({ post, siteUrl, siteName }) {
               headline: post.title,
               description: post.excerpt,
               datePublished: post.date,
+              author: { '@type': 'Person', name: post.author },
               image: post.thumbnail || undefined,
               mainEntityOfPage: url,
               publisher: { '@type': 'Organization', name: siteName },
@@ -57,7 +59,13 @@ export default function PostPage({ post, siteUrl, siteName }) {
           </div>
         )}
         <h1>{post.title}</h1>
-        <div className="meta">&#128197; {formatDate(post.date)}</div>
+        <div className="meta">
+          <span className="meta-item"><UserIcon /> {post.author}</span>
+          <span className="meta-dot">&middot;</span>
+          <span className="meta-item"><CalendarIcon /> {formatDate(post.date)}</span>
+          <span className="meta-dot">&middot;</span>
+          <span className="meta-item"><ClockIcon /> {post.readingTime} min read</span>
+        </div>
         <div className="post-content">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
@@ -93,7 +101,7 @@ export async function getStaticProps({ params }) {
     props: {
       post,
       siteUrl: process.env.NEXT_PUBLIC_SITE_URL || '',
-      siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Hujaifa\'s Blog',
+      siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Simple Blog',
     },
     revalidate: 60,
   };
