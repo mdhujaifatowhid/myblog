@@ -29,7 +29,10 @@ export default function PostPage({ post, siteUrl, siteName }) {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={url} />
-        {post.thumbnail && <meta property="og:image" content={post.thumbnail} />}
+        <meta property="og:image" content={post.thumbnail || `${siteUrl}/og-image.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={post.thumbnail || `${siteUrl}/og-image.jpg`} />
         <meta property="article:published_time" content={post.date || ''} />
         <meta name="twitter:card" content="summary_large_image" />
         <script
@@ -42,7 +45,7 @@ export default function PostPage({ post, siteUrl, siteName }) {
               description: post.excerpt,
               datePublished: post.date,
               author: { '@type': 'Person', name: post.author },
-              image: post.thumbnail || undefined,
+              image: post.thumbnail || `${siteUrl}/og-image.jpg`,
               mainEntityOfPage: url,
               publisher: { '@type': 'Organization', name: siteName },
             }),
